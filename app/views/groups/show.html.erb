@@ -1,5 +1,14 @@
 <div class="col-md-12">
   <div class="group">
+
+    <span class="pull-right">
+      <% if current_user && current_user.is_member_of?(@group) %>
+        <lable class="lable lable-success">群组成员</lable>
+      <% else %>
+        <lable class="lable lable-warning">不是群组成员</lable>
+      <% end %>
+    </span>
+    
     <%= link_to("write a Post", new_group_post_path(@group), class: "btn btn-default pull-right") %>
     <% if current_user && current_user == @group.user %>
     <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary pull-right") %>
